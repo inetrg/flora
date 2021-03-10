@@ -9,10 +9,18 @@ cleanall: checkmakefiles
 	@cd src && $(MAKE) MODE=debug clean
 	@rm -f src/Makefile
 
-INET_PROJ=../inet
-makefiles:
-	@cd src && opp_makemake -o flora -O out -f --deep -KINET_PROJ=../../inet -DINET_IMPORT -I. -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/src -lINET$$\(D\)
+OPP_MAKEMAKE_ARGS = -o flora -O out -f --deep -KINET_PROJ=../../inet -DINET_IMPORT -I. -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/src -lINET$$\(D\)
 
+INET_PROJ=../inet
+
+BUILD_LIB ?= 0
+
+ifneq (0, $(BUILD_LIB))
+  OPP_MAKEMAKE_ARGS += -s
+endif
+
+makefiles:
+	@cd src && opp_makemake $(OPP_MAKEMAKE_ARGS)
 checkmakefiles:
 	@if [ ! -f src/Makefile ]; then \
 	echo; \
