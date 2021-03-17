@@ -19,6 +19,10 @@ ifneq (0, $(BUILD_LIB))
   OPP_MAKEMAKE_ARGS += -s
 endif
 
+ifneq (0, $(BUILD_STATIC_LIB))
+  OPP_MAKEMAKE_ARGS += -a
+endif
+
 makefiles:
 	@cd src && opp_makemake $(OPP_MAKEMAKE_ARGS)
 checkmakefiles:
