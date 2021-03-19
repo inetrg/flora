@@ -23,6 +23,17 @@ ifneq (0, $(BUILD_STATIC_LIB))
   OPP_MAKEMAKE_ARGS += -a
 endif
 
+CMDENV ?= 0
+
+ifneq (0, $(CMDENV))
+  OMNETPP_EXTRA_ARGS += -u Cmdenv
+endif
+
+NETWORK ?= 1
+
+run:
+	cd simulations && ../src/flora $(OMNETPP_EXTRA_ARGS) -n ../src:../simulations:../../inet/examples:../../inet/src:../../inet/tutorials -l ../../inet/src/INET -f flora_skeleton.ini -f test_networks/network$(NETWORK).ini
+
 makefiles:
 	@cd src && opp_makemake $(OPP_MAKEMAKE_ARGS)
 checkmakefiles:
