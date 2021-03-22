@@ -14,6 +14,7 @@ INET_PATH ?= ../../inet
 OPP_MAKEMAKE_ARGS = -o flora -O out -f --deep -KINET_PROJ=$(INET_PATH) -DINET_IMPORT -I. -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/src -lINET$$\(D\)
 
 BUILD_LIB ?= 0
+BUILD_STATIC_LIB ?= 0
 
 ifneq (0, $(BUILD_LIB))
   OPP_MAKEMAKE_ARGS += -s
