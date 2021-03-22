@@ -25,9 +25,13 @@ ifneq (0, $(BUILD_STATIC_LIB))
 endif
 
 CMDENV ?= 0
+VERBOSE ?= 0
 
 ifneq (0, $(CMDENV))
   OMNETPP_EXTRA_ARGS += -u Cmdenv
+  ifneq (0, $(VERBOSE))
+    OMNETPP_EXTRA_ARGS += --cmdenv-express-mode=false
+  endif
 endif
 
 NETWORK ?= 1
