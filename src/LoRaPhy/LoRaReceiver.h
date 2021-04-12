@@ -45,7 +45,7 @@ namespace physicallayer {
 class INET_API LoRaReceiver : public FlatReceiverBase
 
 {
-private:
+protected:
     W LoRaTP;
     Hz LoRaCF;
     int LoRaSF;
