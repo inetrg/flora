@@ -13,17 +13,6 @@ INET_PATH ?= ../../inet
 
 OPP_MAKEMAKE_ARGS = -o flora -O out -f --deep -KINET_PROJ=$(INET_PATH) -DINET_IMPORT -I. -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/src -lINET$$\(D\)
 
-BUILD_LIB ?= 0
-BUILD_STATIC_LIB ?= 0
-
-ifneq (0, $(BUILD_LIB))
-  OPP_MAKEMAKE_ARGS += -s
-endif
-
-ifneq (0, $(BUILD_STATIC_LIB))
-  OPP_MAKEMAKE_ARGS += -a
-endif
-
 CMDENV ?= 0
 VERBOSE ?= 0
 
@@ -50,3 +39,9 @@ checkmakefiles:
 	echo; \
 	exit 1; \
 	fi
+
+makefiles-lib:
+	@cd src && opp_makemake $(OPP_MAKEMAKE_ARGS) -s
+
+makefiles-static-lib:
+	@cd src && opp_makemake $(OPP_MAKEMAKE_ARGS) -a
