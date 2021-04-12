@@ -101,7 +101,7 @@ bool LoRaReceiver::computeIsReceptionAttempted(const IListening *listening, cons
             /* NOTE: This removes the dependency between the LoRa PHY and the
              * MAC Layer
              */
-#ifdef VANILLA
+#if 0
             auto *macLayer = check_and_cast<LoRaMac *>(getParentModule()->getParentModule()->getSubmodule("mac"));
             if (rec == macLayer->getAddress()) {
                 const_cast<LoRaReceiver* >(this)->numCollisions++;
