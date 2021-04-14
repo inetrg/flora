@@ -11,7 +11,7 @@ cleanall: checkmakefiles
 
 INET_PATH ?= ../../inet
 
-OPP_MAKEMAKE_ARGS = -o flora -O out -f --deep -KINET_PROJ=$(INET_PATH) -DINET_IMPORT -I. -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/src -lINET$$\(D\)
+OPP_MAKEMAKE_ARGS = -o flora -O out -f --deep -KINET_PROJ=$(INET_PATH) -DINET_IMPORT -I. -I$$\(INET_PROJ\)/src -L$$\(INET_PROJ\)/src -lINET$$\(D\) -KOMNETPP_CONFIGFILE=../../common/Makefile.inc
 
 CMDENV ?= 0
 VERBOSE ?= 0
