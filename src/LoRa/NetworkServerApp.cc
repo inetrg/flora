@@ -97,6 +97,7 @@ void NetworkServerApp::processLoraMACPacket(Packet *pk)
 void NetworkServerApp::finish()
 {
     recordScalar("LoRa_NS_DER", double(counterUniqueReceivedPackets)/counterOfSentPacketsFromNodes);
+    recordScalar("counterOfSentPacketsFromNodes", counterOfSentPacketsFromNodes);
     for(uint i=0;i<knownNodes.size();i++)
     {
         delete knownNodes[i].historyAllSNIR;
