@@ -177,6 +177,7 @@ const INoise *LoRaAnalogModel::computeNoise(const IListening *listening, const I
             powerChanges->insert(std::pair<simtime_t, W>(backgroundNoisePowerChange.first, backgroundNoisePowerChange.second));
     }
 
+    delete backgroundNoisePowerChanges;
     EV_TRACE << "Noise power begin " << endl;
     W noise = W(0);
     for (std::map<simtime_t, W>::const_iterator it = powerChanges->begin(); it != powerChanges->end(); it++) {
